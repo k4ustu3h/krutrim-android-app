@@ -4,15 +4,15 @@ plugins {
 }
 
 android {
-    namespace 'com.matthaigh27.chatgptwrapper'
-    compileSdk 33
+    namespace 'k4ustu3h.krutrim'
+    compileSdk 34
 
     defaultConfig {
-        applicationId "com.matthaigh27.chatgptwrapper"
+        applicationId "k4ustu3h.krutrim"
         minSdk 28
-        targetSdk 33
+        targetSdk 34
         versionCode 1
-        versionName "1.5"
+        versionName "1.0"
     }
 
     buildTypes {
@@ -37,9 +37,9 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 }
