@@ -15,8 +15,8 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.window.OnBackInvokedDispatcher
-import k4ustu3h.krutrim.databinding.ActivityMainBinding
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import k4ustu3h.krutrim.databinding.ActivityMainBinding
 
 class MainActivity : Activity() {
     private val userAgent =
@@ -65,8 +65,7 @@ class MainActivity : Activity() {
                     return false
                 }
 
-                if (webView.url.toString().contains(chatUrl) &&
-                    !webView.url.toString().contains("/auth")
+                if (webView.url.toString().contains(chatUrl)
                 ) {
                     val intent = Intent(Intent.ACTION_VIEW, url)
                     startActivity(intent)
@@ -79,8 +78,7 @@ class MainActivity : Activity() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
                 swipeLayout.isRefreshing = false
-                swipeLayout.isEnabled = !(webView.url.toString().contains(chatUrl) &&
-                                        !webView.url.toString().contains("/auth"))
+                swipeLayout.isEnabled = true
 
                 webView.evaluateJavascript(
                     """
