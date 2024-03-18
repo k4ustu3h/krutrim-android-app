@@ -9,12 +9,14 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.view.WindowInsetsController
 import android.view.WindowManager
 import android.webkit.JavascriptInterface
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.window.OnBackInvokedDispatcher
+import androidx.annotation.RequiresApi
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import k4ustu3h.krutrim.databinding.ActivityMainBinding
 
@@ -47,7 +49,7 @@ class MainActivity : Activity() {
         }
 
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        window.statusBarColor = Color.parseColor("#343541")
+        window.statusBarColor = Color.parseColor("white")
 
         webView.settings.userAgentString = userAgent
         webView.settings.domStorageEnabled = true
@@ -75,10 +77,16 @@ class MainActivity : Activity() {
                 return false
             }
 
+            @RequiresApi(Build.VERSION_CODES.R)
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
                 swipeLayout.isRefreshing = false
                 swipeLayout.isEnabled = true
+
+                view?.windowInsetsController?.setSystemBarsAppearance(
+                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
+                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+                )
 
                 webView.evaluateJavascript(
                     """
